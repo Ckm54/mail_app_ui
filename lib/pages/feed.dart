@@ -86,9 +86,9 @@ class _FeedState extends State<Feed> with SingleTickerProviderStateMixin {
               Expanded(
                 child: Container(
                   color: _backgroundColor,
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.vertical,
-                    child: EmailListView(
+                  child: ListDetailTransition(
+                    animation: _railAnimation,
+                    one: EmailListView(
                       currentUser: widget.currentUser,
                       selectedIndex: selectedIndex,
                       onSelected: (index) {
@@ -97,6 +97,7 @@ class _FeedState extends State<Feed> with SingleTickerProviderStateMixin {
                         });
                       },
                     ),
+                    two: const ReplyListView(),
                   ),
                 ),
               ),

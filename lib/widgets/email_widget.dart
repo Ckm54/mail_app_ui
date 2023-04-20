@@ -9,7 +9,7 @@ enum EmailType {
 class EmailWidget extends StatefulWidget {
   const EmailWidget({
     super.key,
-    required this.emial,
+    required this.email,
     this.isSelected = false,
     this.isPreview = true,
     this.showHeadline = false,
@@ -22,7 +22,7 @@ class EmailWidget extends StatefulWidget {
   final bool showHeadline;
   final bool isThreaded;
   final void Function()? onSelected;
-  final Email emial;
+  final Email email;
 
   @override
   State<EmailWidget> createState() => _EmailWidgetState();
@@ -56,12 +56,12 @@ class _EmailWidgetState extends State<EmailWidget> {
           children: [
             if (widget.showHeadline) ...[
               EmailHeadline(
-                email: widget.emial,
+                email: widget.email,
                 isSelected: widget.isSelected,
               )
             ],
             EmailContent(
-              email: widget.emial,
+              email: widget.email,
               isPreview: widget.isPreview,
               isThreaded: widget.isThreaded,
               isSelected: widget.isSelected,

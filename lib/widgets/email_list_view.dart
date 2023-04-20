@@ -17,6 +17,7 @@ class EmailListView extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: ListView(
+        shrinkWrap: true,
         children: [
           const SizedBox(
             height: 8,
@@ -33,6 +34,7 @@ class EmailListView extends StatelessWidget {
 
               // Email widget as child
               child: ListView(
+                shrinkWrap: true,
                 children: [
                   const SizedBox(
                     height: 8.0,
@@ -48,7 +50,7 @@ class EmailListView extends StatelessWidget {
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 8.0),
                       child: EmailWidget(
-                        emial: data.emails[index],
+                        email: data.emails[index],
                         onSelected: onSelected != null
                             ? () {
                                 onSelected!(index);

@@ -103,8 +103,8 @@ class _EmailContentState extends State<EmailContent> {
                   ),
                 ),
                 if (constraints.maxWidth - 200 > 0) ...[
-                  // todo: Add star button here
-                  // const StarButton(),
+                  ///// todo: Add star button here
+                  const StarButton(),
                 ],
               ],
             );

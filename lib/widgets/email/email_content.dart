@@ -154,7 +154,8 @@ class _EmailContentState extends State<EmailContent> {
                 )
               : const SizedBox.shrink(),
           if (!widget.isPreview) ...[
-            // todo: Display email reply options here
+            /////// todo: Display email reply options here
+            const EmailReplyOptions(),
           ]
         ],
       ),

@@ -37,7 +37,10 @@ class EmailListView extends StatelessWidget {
                   const SizedBox(
                     height: 8.0,
                   ),
-                  // todo: display search bar here
+                  ///// todo: display search bar here
+                  SearchBar(
+                    currentUser: currentUser,
+                  ),
                   const SizedBox(
                     height: 8.0,
                   ),

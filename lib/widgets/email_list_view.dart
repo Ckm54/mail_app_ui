@@ -32,6 +32,31 @@ class EmailListView extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 8.0),
 
               // Email widget as child
+              child: ListView(
+                children: [
+                  const SizedBox(
+                    height: 8.0,
+                  ),
+                  // todo: display search bar here
+                  const SizedBox(
+                    height: 8.0,
+                  ),
+                  ...List.generate(data.emails.length, (index) {
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: 8.0),
+                      child: EmailWidget(
+                        emial: data.emails[index],
+                        onSelected: onSelected != null
+                            ? () {
+                                onSelected!(index);
+                              }
+                            : null,
+                        isSelected: selectedIndex == index,
+                      ),
+                    );
+                  })
+                ],
+              ),
             );
           })
         ],

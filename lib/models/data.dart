@@ -6,7 +6,7 @@ final User user_0 = User(
   avatarUrl: 'assets/avatar_1.png',
 );
 final User user_1 = User(
-  name: const Name(first: '老', last: '强'),
+  name: const Name(first: 'Mark', last: 'Smith'),
   avatarUrl: 'assets/avatar_2.png',
   lastActive: DateTime.now().subtract(
     const Duration(minutes: 10),
@@ -38,8 +38,9 @@ final List<Email> emails = [
   Email(
     sender: user_1,
     recipients: [],
-    subject: '豆花鱼',
-    content: '最近忙吗？昨晚我去了你最爱的那家饭馆，点了他们的特色豆花鱼，吃着吃着就想你了。',
+    subject: 'Infinity Race',
+    content:
+        'Our race club\'s annual infinity race is finally here!. Feeling great yet? We have more news!!! Winner gets to take home our own very customized mini race car.',
   ),
   Email(
     sender: user_2,

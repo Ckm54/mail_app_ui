@@ -1,8 +1,6 @@
 library widgets;
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:material_design/models/models.dart';
 import 'package:material_design/models/data.dart' as data;
 

@@ -11,3 +11,4 @@ part 'email_widget.dart';
 part 'email/email_content.dart';
 part 'email/email_headline.dart';
 part 'email/email_reply_options.dart';
+part 'search_bar.dart';

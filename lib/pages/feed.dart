@@ -19,46 +19,76 @@ class _FeedState extends State<Feed> {
 
   int selectedIndex = 0;
 
+  bool wideScreen = false;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    final double width = MediaQuery.of(context).size.width;
+    wideScreen = width > 600;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: _backgroundColor,
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: EmailListView(
-            currentUser: widget.currentUser,
-            selectedIndex: selectedIndex,
-            onSelected: (index) {
-              setState(() {
-                selectedIndex = index;
-              });
-            },
+      body: Row(
+        children: [
+          if (wideScreen)
+            DisappearingNavigationRail(
+              backgroundColor: _backgroundColor,
+              selectedIndex: selectedIndex,
+              onDestinationSelected: (index) {
+                setState(() {
+                  selectedIndex = index;
+                });
+              },
+            ),
+          Expanded(
+            child: Container(
+              color: _backgroundColor,
+              child: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: EmailListView(
+                  currentUser: widget.currentUser,
+                  selectedIndex: selectedIndex,
+                  onSelected: (index) {
+                    setState(() {
+                      selectedIndex = index;
+                    });
+                  },
+                ),
+              ),
+            ),
           ),
-        ),
+        ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: _colorScheme.tertiaryContainer,
-        foregroundColor: _colorScheme.onTertiaryContainer,
-        child: const Icon(Icons.add),
-      ),
-      bottomNavigationBar: NavigationBar(
-        elevation: 0,
-        backgroundColor: Colors.white,
-        destinations: destinations.map<NavigationDestination>((dest) {
-          return NavigationDestination(
-            icon: Icon(dest.icon),
-            label: dest.label,
-          );
-        }).toList(),
-        selectedIndex: selectedIndex,
-        onDestinationSelected: (index) {
-          setState(() {
-            selectedIndex = index;
-          });
-        },
-      ),
+      floatingActionButton: wideScreen
+          ? null
+          : FloatingActionButton(
+              onPressed: () {},
+              backgroundColor: _colorScheme.tertiaryContainer,
+              foregroundColor: _colorScheme.onTertiaryContainer,
+              child: const Icon(Icons.add),
+            ),
+      bottomNavigationBar: wideScreen
+          ? null
+          : NavigationBar(
+              elevation: 0,
+              backgroundColor: Colors.white,
+              destinations: destinations.map<NavigationDestination>((dest) {
+                return NavigationDestination(
+                  icon: Icon(dest.icon),
+                  label: dest.label,
+                );
+              }).toList(),
+              selectedIndex: selectedIndex,
+              onDestinationSelected: (index) {
+                setState(() {
+                  selectedIndex = index;
+                });
+              },
+            ),
     );
   }
 }
